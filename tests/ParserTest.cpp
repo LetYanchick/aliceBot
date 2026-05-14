@@ -2,7 +2,6 @@
 #include "Parser.h"
 #include <fstream>
 
-// Write a temp file and parse it
 static DungeonState parseString(const std::string& content, const std::string& fname = "test_tmp.txt") {
     std::ofstream f(fname);
     f << content;
@@ -21,8 +20,6 @@ static std::string badLine(const std::string& content, const std::string& fname 
         return e.line;
     }
 }
-
-// ---- valid input ----
 
 TEST(ParserTest, ParsesExampleCorrectly) {
     auto ds = parseString(
@@ -44,7 +41,7 @@ TEST(ParserTest, ParsesExampleCorrectly) {
 }
 
 TEST(ParserTest, GraphMadeUndirected) {
-    // Room 4 lists only {2,5} but room 3 lists {1,4} — after parse, 4 should know about 3
+    // 4я комната записана в соседях 3, но 3я не аписана у 4. это должно считываться
     auto ds = parseString(
         "5\n"
         "0 1,2 0 0 0 0\n"
@@ -59,7 +56,6 @@ TEST(ParserTest, GraphMadeUndirected) {
     EXPECT_NE(std::find(adj4.begin(), adj4.end(), 3), adj4.end());
 }
 
-// ---- invalid input ----
 
 TEST(ParserTest, BadSeparatorInAdjacent) {
     std::string bad = badLine(

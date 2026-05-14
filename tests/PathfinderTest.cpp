@@ -16,7 +16,6 @@ TEST(PathfinderTest, ShortestPathLinear) {
 }
 
 TEST(PathfinderTest, TieBreaksBySmallestId) {
-    // 0 connected to both 1 and 2, both connected to 3
     //   1
     //  / \
     // 0   3
@@ -29,13 +28,13 @@ TEST(PathfinderTest, TieBreaksBySmallestId) {
 
     auto path = Pathfinder::shortestVisited(ds, 0, 3);
     ASSERT_EQ(path.size(), 2u);
-    EXPECT_EQ(path[0], 1); // picks 1 over 2
+    EXPECT_EQ(path[0], 1); // выбирает 1
 }
 
 TEST(PathfinderTest, UnreachableReturnsEmpty) {
     auto ds = makeState(2, Resource::GOLD, 10);
     link(ds, 0, 1);
-    // room 2 is isolated
+    // до 2 комнаты не добраться
     ds.visit(0); ds.visit(1); ds.visit(2);
 
     auto path = Pathfinder::shortestVisited(ds, 0, 2);
@@ -43,13 +42,13 @@ TEST(PathfinderTest, UnreachableReturnsEmpty) {
 }
 
 TEST(PathfinderTest, UnvisitedRoomNotUsed) {
-    // 0 - 1 - 2 - 3, but 2 is not visited
+    // 0 - 1 - 2 - 3, но без 2
     auto ds = makeState(3, Resource::GOLD, 10);
     link(ds, 0, 1); link(ds, 1, 2); link(ds, 2, 3);
-    ds.visit(0); ds.visit(1); ds.visit(3); // 2 skipped
+    ds.visit(0); ds.visit(1); ds.visit(3); // 2 не посещена
 
     auto path = Pathfinder::shortestVisited(ds, 0, 3);
-    EXPECT_TRUE(path.empty()); // can't reach 3 without going through 2
+    EXPECT_TRUE(path.empty()); // не добраться до 3 без 2
 }
 
 TEST(PathfinderTest, SameRoomReturnsEmptyPath) {

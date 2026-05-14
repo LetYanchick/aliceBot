@@ -5,12 +5,12 @@ TEST(ResourceTest, NamesRoundTrip) {
     EXPECT_EQ(resourceFromString(resourceName(Resource::IRON)), Resource::IRON);
     EXPECT_EQ(resourceFromString(resourceName(Resource::GOLD)), Resource::GOLD);
     EXPECT_EQ(resourceFromString(resourceName(Resource::GEMS)), Resource::GEMS);
-    EXPECT_EQ(resourceFromString(resourceName(Resource::EXP)),  Resource::EXP);
+    EXPECT_EQ(resourceFromString(resourceName(Resource::EXP)), Resource::EXP);
 }
 
 TEST(ResourceTest, UnknownStringReturnsNone) {
     EXPECT_EQ(resourceFromString("diamond"), Resource::NONE);
-    EXPECT_EQ(resourceFromString(""),        Resource::NONE);
+    EXPECT_EQ(resourceFromString(""), Resource::NONE);
 }
 
 TEST(ResourceTest, BaseValues) {

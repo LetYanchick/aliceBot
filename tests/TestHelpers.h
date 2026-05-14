@@ -1,7 +1,7 @@
 #pragma once
 #include "DungeonState.h"
 
-// Build a minimal DungeonState for tests without going through the Parser.
+// DungeonState для тестов чтобы не парсить лишний раз
 inline DungeonState makeState(int n, Resource quest, int food) {
     DungeonState ds;
     ds.rooms.resize(n + 1);
@@ -14,7 +14,6 @@ inline DungeonState makeState(int n, Resource quest, int food) {
     return ds;
 }
 
-// Link two rooms bidirectionally.
 inline void link(DungeonState& ds, int a, int b) {
     ds.rooms[a].adjacent.push_back(b);
     ds.rooms[b].adjacent.push_back(a);
