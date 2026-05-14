@@ -1,6 +1,6 @@
 #include <gtest/gtest.h>
 #include "TestHelpers.h"
-#include "../Pathfinder.h"
+#include "Pathfinder.h"
 
 TEST(PathfinderTest, ShortestPathLinear) {
     // 0 - 1 - 2 - 3, all visited

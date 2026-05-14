@@ -1,5 +1,5 @@
 #include <gtest/gtest.h>
-#include "../Parser.h"
+#include "Parser.h"
 #include <fstream>
 
 // Write a temp file and parse it

@@ -1,7 +1,7 @@
 #include <gtest/gtest.h>
-#include "../Parser.h"
-#include "../Logger.h"
-#include "../AliceBot.h"
+#include "Parser.h"
+#include "Logger.h"
+#include "AliceBot.h"
 #include <fstream>
 #include <sstream>
 

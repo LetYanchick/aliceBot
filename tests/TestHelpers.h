@@ -1,5 +1,5 @@
 #pragma once
-#include "../DungeonState.h"
+#include "DungeonState.h"
 
 // Build a minimal DungeonState for tests without going through the Parser.
 inline DungeonState makeState(int n, Resource quest, int food) {

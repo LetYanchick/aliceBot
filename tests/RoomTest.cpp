@@ -1,5 +1,5 @@
 #include <gtest/gtest.h>
-#include "../Room.h"
+#include "Room.h"
 
 TEST(ResourceTest, NamesRoundTrip) {
     EXPECT_EQ(resourceFromString(resourceName(Resource::IRON)), Resource::IRON);
